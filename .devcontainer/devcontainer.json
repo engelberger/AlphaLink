@@ -1,0 +1,6 @@
+{
+    "name": "AlphaLink",
+    "dockerComposeFile": "./docker-compose.yaml",
+	// "workspaceFolder": "/workspaces/",
+    "service": "alphalink"
+}
