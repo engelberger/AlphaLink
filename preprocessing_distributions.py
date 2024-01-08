@@ -43,7 +43,7 @@ restraints = np.genfromtxt(args.infile,
                            dtype=None,
                            encoding=None)
 
-if len(restraints.shape) == 1:
+if restraints.size <= 1:
     restraints = np.array([restraints])
 
 distogram = []
