@@ -74,6 +74,15 @@ MSA generation can be skipped if there are precomputed alignments:
 python predict_with_crosslinks.py 7K3N_A.fasta photoL.csv --use_precomputed_alignments msa/ --checkpoint_path resources/AlphaLink_params/finetuning_model_5_ptm_CACA_10A.pt --uniref90_database_path uniref90.fasta --mgnify_database_path mgy_clusters.fa --pdb70_database_path pdb70/pdb70 --uniclust30_database_path uniclust30_2018_08/uniclust30_2018_08
 ```
 
+```DevContainer
+/opt/conda/envs/basis/bin/python3.7 /opt/openfold/predict_with_crosslinks.py \
+/workspaces/AlphaLink/test_set/CDK/fasta/CDK.fasta \
+/workspaces/AlphaLink/test_set/CDK/crosslinks/mixture.csv \
+--features /workspaces/AlphaLink/test_set/CDK/features/CDK_neff10.pkl \
+--checkpoint_path /workspaces/AlphaLink/resources/AlphaLink_params/finetuning_model_5_ptm_CACA_10A.pt 
+
+```
+
 or with precomputed features (pickle) with --features
 
 ## Network weights

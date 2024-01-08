@@ -43,6 +43,23 @@ RUN wget -q -P /opt/openfold/openfold/resources \
 
 WORKDIR /opt/openfold
 RUN /opt/conda/envs/basis/bin/python3.7 setup.py install
+# Make dirs resources/AlphaLink_params/
+RUN mkdir -p /opt/openfold/resources/AlphaLink_params/
+# Copy AlphaLink_params/ to resources/AlphaLink_params/
+COPY resources/AlphaLink_params/ /opt/openfold/resources/AlphaLink_params/
+# Alternatively, you can download the AlphaFold parameters from the dropbox link below and gunzip them into resources/AlphaLink_params/
+# https://www.dropbox.com/s/8npy4d6q86eqpfn/finetuning_model_5_ptm_CACA_10A.pt.gz?dl=0 
+# https://www.dropbox.com/s/5jmb8pxmt5rr751/finetuning_model_5_ptm_distogram.pt.gz?dl=0
+#RUN wget -q -P /opt/openfold/resources/AlphaLink_params/ \
+#    https://www.dropbox.com/s/8npy4d6q86eqpfn/finetuning_model_5_ptm_CACA_10A.pt.gz?dl=0 \
+#    && gunzip /opt/openfold/resources/AlphaLink_params/finetuning_model_5_ptm_CACA_10A.pt.gz?dl=0 \
+#    && wget -q -P /opt/openfold/resources/AlphaLink_params/ \
+#    https://www.dropbox.com/s/5jmb8pxmt5rr751/finetuning_model_5_ptm_distogram.pt.gz?dl=0 \
+#    && gunzip /opt/openfold/resources/AlphaLink_params/finetuning_model_5_ptm_distogram.pt.gz?dl=0 
+
+# To run the CDK test you also need to ungzip the following /workspaces/AlphaLink/test_set/CDK/features/CDK_neff10.pkl.gz
+# otherwise you will get an error that the tensors shape is not correct
+#RUN gunzip /workspaces/AlphaLink/test_set/CDK/features/CDK_neff10.pkl.gz
 
 COPY preprocessing_distributions.py /opt/openfold/
 COPY predict_with_crosslinks.py /opt/openfold/
