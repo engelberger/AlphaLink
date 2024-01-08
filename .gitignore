@@ -2,3 +2,6 @@
 */*/__pycache__/
 */*/*/__pycache__/
 /predictions
+test_set/CDK/features/CDK_neff10.pkl
+resources/AlphaLink_params/finetuning_model_5_ptm_distogram.pt
+resources/AlphaLink_params/finetuning_model_5_ptm_CACA_10A.pt
