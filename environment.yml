@@ -24,7 +24,7 @@ dependencies:
       - git+https://github.com/NVIDIA/dllogger.git
   
   # ? NOTE: PROBLEM IS HERE!
-  # - conda-forge::python=3.7
+  - conda-forge::python=3.7
   # - conda-forge::setuptools=59.5.0
   - conda-forge::setuptools
   # - conda-forge::openmm=7.5.1

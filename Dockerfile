@@ -16,8 +16,9 @@ COPY environment.yml /opt/openfold/environment.yml
 
 ## installing into the base environment since the docker container wont do anything other than run openfold
 RUN conda install -c conda-forge mamba
-RUN mamba env update -n base --file /opt/openfold/environment.yml 
-
+RUN mamba create -n basis python=3.7 -y
+RUN mamba env update -n basis --file /opt/openfold/environment.yml 
+#
 # ? NOTE: This is not strictly necessary, but it would potentially reduce the size of the docker image. However, currently this breaks the docker image. 
 # RUN mamba clean --all
 
@@ -41,7 +42,7 @@ RUN wget -q -P /opt/openfold/openfold/resources \
 # RUN patch -p0 -d /opt/conda/lib/python3.7/site-packages/ < /opt/openfold/lib/openmm.patch
 
 WORKDIR /opt/openfold
-RUN python3 setup.py install
+RUN /opt/conda/envs/basis/bin/python3.7 setup.py install
 
 COPY preprocessing_distributions.py /opt/openfold/
 COPY predict_with_crosslinks.py /opt/openfold/
